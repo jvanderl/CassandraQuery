@@ -64,9 +64,13 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error)  {
 	
 	log.Debugf("Next Step is Query Execution")
 	
-	iter := session.Query("SELECT empid, name, salary FROM "+tableName).Iter()
+	iter := session.Query("SELECT empid, name, salary FROM "+tableName).Iter()	
     for iter.Scan(&empid , &name, &salary) {
        // fmt.Println("EmpID: ", empid,"Name: ", name , "Salary: ", salary)
+	    if err != nil {
+       log.Debugf("Error in query execution : ", err)
+   }
+	    
         log.Debugf("EmpID: ", empid,"Name: ", name , "Salary: ", salary)
     }
 	//if err := iter.Close(); err != nil {
