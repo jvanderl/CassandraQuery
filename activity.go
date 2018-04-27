@@ -54,6 +54,12 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error)  {
 		name string
 		salary float64			
 	) 
+	log.Debugf("Session : " , session)
+	log.Debugf("Cluster : " , clusterIP)
+	log.Debugf("Keyspace : ", keySpace)
+	log.Debugf("Session Timeout : " ,cluster.Timeout)
+	
+	log.Debugf("Next Step is Query Execution")
 	
 	iter := session.Query("SELECT empid, name, salary FROM "+tableName).Iter()
     for iter.Scan(&empid , &name, &salary) {
