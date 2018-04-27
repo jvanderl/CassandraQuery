@@ -47,6 +47,9 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error)  {
  
    // cluster.ProtoVersion = 4
     session, err := cluster.CreateSession()
+	if err != nil {
+       log.Debugf("Could not connect to cassandra cluster: ", err)
+   }
 	log.Debugf("Session Created Sucessfully")
 	
 	var(
@@ -66,13 +69,11 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error)  {
        // fmt.Println("EmpID: ", empid,"Name: ", name , "Salary: ", salary)
         log.Debugf("EmpID: ", empid,"Name: ", name , "Salary: ", salary)
     }
-	if err := iter.Close(); err != nil {
-		log.Debugf("Error in query execution : ", err)	 	
-	}
+	//if err := iter.Close(); err != nil {
+	//	log.Debugf("Error in query execution : ", err)	 	
+	//}
 	
-	if err != nil {
-       log.Debugf("Could not connect to cassandra cluster: ", err)
-   }
+	
 	log.Debugf("Session : " , session)
 	log.Debugf("Cluster : " , clusterIP)
 	log.Debugf("Keyspace : ", keySpace)
