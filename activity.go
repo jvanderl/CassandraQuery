@@ -67,7 +67,7 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error)  {
         log.Debugf("EmpID: ", empid,"Name: ", name , "Salary: ", salary)
     }
 	if err := iter.Close(); err != nil {
-		log.Debugf("Error")		
+		log.Debugf("Error in query execution : ", err)	 	
 	}
 	
 	if err != nil {
