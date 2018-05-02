@@ -3,28 +3,40 @@
   "version": "0.0.1",
   "type": "flogo:activity",
   "description": "Cassandra Connection and Query activity description",
-  "version": "0.0.1",
   "title": "CassandraQueryDB",
   "ref": "github.com/dhire05/CassandraQuery",
 
   "inputs":[
     {
       "name": "ClusterIP",
-      "type": "string"
+      "type": "string",
+      "value": "localhost"
     },
 	{
       "name": "Keyspace",
-      "type": "string"
+      "type": "string",
+      "value": "sample"
     },
 	{
       "name": "TableName",
-      "type": "string"
+      "type": "string",
+      "value": "employee"
+    },
+    {
+      "name": "Select",
+      "type": "string",
+      "value": "*"
+    },
+    {
+      "name": "Where",
+      "type": "string",
+      "value": ""
     }	
   ],
   "outputs": [
     {
       "name": "result",
-      "type": "string"
+      "type": "any"
     }
   ]
 }
